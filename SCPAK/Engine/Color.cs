@@ -110,14 +110,24 @@ namespace Engine
             }
         }
 
-        public Color(float r, float g, float b, float a)
+        public Color(float r, float g, float b)
         {
-            this = new Color((byte)(MathUtils.Saturate(r) * 255f), (byte)(MathUtils.Saturate(g) * 255f), (byte)(MathUtils.Saturate(b) * 255f), (byte)(MathUtils.Saturate(a) * 255f));
+            this = new Color((byte)(MathUtils.Saturate(r) * 255f), (byte)(MathUtils.Saturate(g) * 255f), (byte)(MathUtils.Saturate(b) * 255f), (byte)255);
         }
 
         public Color(byte r, byte g, byte b, byte a)
         {
             this.PackedValue = (uint)((int)a << 24 | (int)b << 16 | (int)g << 8 | (int)r);
+        }
+
+        public Color(byte r, byte g, byte b)
+        {
+            this.PackedValue = (uint)(-16777216 | (int)b << 16 | (int)g << 8 | (int)r);
+        }
+
+        public Color(uint packedValue)
+        {
+            this.PackedValue = packedValue;
         }
 
         public Color(int r, int g, int b, int a)
@@ -138,7 +148,10 @@ namespace Engine
         {
             return (int)this.PackedValue;
         }
-
+        public Color(float r, float g, float b, float a)
+        {
+            this = new Color((byte)(MathUtils.Saturate(r) * 255f), (byte)(MathUtils.Saturate(g) * 255f), (byte)(MathUtils.Saturate(b) * 255f), (byte)(MathUtils.Saturate(a) * 255f));
+        }
         public override string ToString()
         {
             return string.Format("{0}, {1}, {2}, {3}", new object[] {

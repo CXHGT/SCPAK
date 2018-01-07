@@ -101,6 +101,7 @@ namespace SCPAK
         {
             PngReader pngReader = new PngReader(fileStream);
             EngineBinaryWriter binaryWriter = new EngineBinaryWriter(memoryStream, false);
+            binaryWriter.Write(false);
             pngReader.ShouldCloseStream = false;
             pngReader.ChunkLoadBehaviour = ChunkLoadBehaviour.LOAD_CHUNK_NEVER;
             pngReader.MaxTotalBytesRead = 9223372036854775807L;
@@ -132,10 +133,9 @@ namespace SCPAK
                 modelpng = true;
             }
             if(modelpng) goto IL_00;
-            binaryWriter.Write(true);
             binaryWriter.Write(image.Width);
             binaryWriter.Write(image.Height);
-            binaryWriter.Write(list.Count);
+            binaryWriter.Write(1);
             for (int i = 0; i < image.Height; i++)
             {
                 byte[] array = imageLines.ScanlinesB[i];
@@ -151,7 +151,6 @@ namespace SCPAK
             }
             return;
             IL_00:
-            binaryWriter.Write(true);
             binaryWriter.Write(list[0].Width);
             binaryWriter.Write(list[0].Height);
             binaryWriter.Write(list.Count);

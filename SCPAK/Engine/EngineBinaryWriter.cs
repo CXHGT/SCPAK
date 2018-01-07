@@ -15,7 +15,6 @@ namespace Engine
             this.Write(value.Y);
             this.Write(value.Z);
         }
-
         public virtual void Write(BoundingBox value)
         {
             this.Write(value.Min);
@@ -40,11 +39,6 @@ namespace Engine
             this.Write(value.M42);
             this.Write(value.M43);
             this.Write(value.M44);
-        }
-
-        public new void Write7BitEncodedInt(int value)
-        {
-            base.Write7BitEncodedInt(value);
         }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Engine\ReadOnlyList.cs" />
     <Compile Include="Engine\Vector2.cs" />
     <Compile Include="Engine\Vector3.cs" />
+    <Compile Include="Engine\Vector4.cs" />
     <Compile Include="Engine\VertexElement.cs" />
     <Compile Include="Engine\VertexElementFormat.cs" />
     <Compile Include="Pak.cs" />

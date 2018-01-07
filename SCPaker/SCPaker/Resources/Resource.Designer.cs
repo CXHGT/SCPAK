@@ -1645,11 +1645,14 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b006e
 			public const int menu_item_1 = 2131427438;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int menu_item_2 = 2131427440;
+			// aapt resource value: 0x7f0b0071
+			public const int menu_item_2 = 2131427441;
 			
 			// aapt resource value: 0x7f0b006f
 			public const int menu_item_3 = 2131427439;
+			
+			// aapt resource value: 0x7f0b0070
+			public const int menu_item_4 = 2131427440;
 			
 			// aapt resource value: 0x7f0b001a
 			public const int middle = 2131427354;

@@ -5,9 +5,16 @@ namespace Engine
 {
     public struct BoundingBox : IEquatable<BoundingBox>
     {
+        //
+        // Fields
+        //
         public Vector3 Min;
 
         public Vector3 Max;
+
+        //
+        // Constructors
+        //
         public BoundingBox(float x1, float y1, float z1, float x2, float y2, float z2)
         {
             this.Min = new Vector3(x1, y1, z1);
@@ -18,6 +25,29 @@ namespace Engine
         {
             this.Min = min;
             this.Max = max;
+        }
+
+        public BoundingBox(IEnumerable<Vector3> points)
+        {
+            if (points == null)
+            {
+                throw new ArgumentNullException("points");
+            }
+            this.Min = new Vector3(3.40282347E+38f);
+            this.Max = new Vector3(-3.40282347E+38f);
+            foreach (Vector3 current in points)
+            {
+                this.Min.X = MathUtils.Min(this.Min.X, current.X);
+                this.Min.Y = MathUtils.Min(this.Min.Y, current.Y);
+                this.Min.Z = MathUtils.Min(this.Min.Z, current.Z);
+                this.Max.X = MathUtils.Max(this.Max.X, current.X);
+                this.Max.Y = MathUtils.Max(this.Max.Y, current.Y);
+                this.Max.Z = MathUtils.Max(this.Max.Z, current.Z);
+            }
+            if (this.Min.X == 3.40282347E+38f)
+            {
+                throw new ArgumentException("points");
+            }
         }
 
         public static BoundingBox Union(BoundingBox b, Vector3 p)

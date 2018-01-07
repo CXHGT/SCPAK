@@ -4,9 +4,6 @@ namespace Engine
 {
     public class ModelDataContentReader
     {
-        //
-        // Static Methods
-        //
         public static ModelData ReadModelData(Stream stream)
         {
             EngineBinaryReader engineBinaryReader = new EngineBinaryReader(stream, false);
@@ -53,9 +50,7 @@ namespace Engine
                 modelBuffersData.Vertices = engineBinaryReader.ReadBytes(engineBinaryReader.ReadInt32());
                 modelBuffersData.Indices = engineBinaryReader.ReadBytes(engineBinaryReader.ReadInt32());
             }
-            engineBinaryReader.Dispose();
             return modelData;
         }
-
     }
 }

@@ -3,15 +3,12 @@ namespace Engine
 {
     public struct Plane : IEquatable<Plane>
     {
+        //
+        // Fields
+        //
         public Vector3 Normal;
 
         public float D;
-
-        public Plane(Vector3 normal, float d)
-        {
-            this.Normal = normal;
-            this.D = d;
-        }
         public override bool Equals(object obj)
         {
             return obj is Plane && this.Equals((Plane)obj);
@@ -36,6 +33,10 @@ namespace Engine
                 this.D
             });
         }
+
+        //
+        // Operators
+        //
         public static bool operator ==(Plane p1, Plane p2)
         {
             return p1.Equals(p2);

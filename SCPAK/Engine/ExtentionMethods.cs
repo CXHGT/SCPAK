@@ -2,8 +2,11 @@
 using System.Reflection;
 namespace Engine
 {
-    public static class ExtentionMethods
+    public static class ExtensionMethods
     {
+        //
+        // Static Methods
+        //
         public static int GetElementsCount(this VertexElementFormat format)
         {
             switch (format)
@@ -62,6 +65,23 @@ namespace Engine
             }
         }
 
+        //public static int GetPrimitivesCount(this PrimitiveType primitiveType, int indicesCount)
+        //{
+        //    switch (primitiveType)
+        //    {
+        //        case PrimitiveType.LineList:
+        //            return indicesCount / 2;
+        //        case PrimitiveType.LineStrip:
+        //            return MathUtils.Max(indicesCount - 1, 0);
+        //        case PrimitiveType.TriangleList:
+        //            return indicesCount / 3;
+        //        case PrimitiveType.TriangleStrip:
+        //            return MathUtils.Max(indicesCount - 2, 0);
+        //        default:
+        //            throw new InvalidOperationException("Unsupported PrimitiveType.");
+        //    }
+        //}
+
         public static string GetSemanticString(this VertexElementSemantic semantic)
         {
             switch (semantic)
@@ -100,6 +120,68 @@ namespace Engine
                     throw new InvalidOperationException("Unrecognized vertex semantic.");
             }
         }
+
+        //public static int GetSize(this ColorFormat format)
+        //{
+        //    switch (format)
+        //    {
+        //        case ColorFormat.Rgba8888:
+        //            return 4;
+        //        case ColorFormat.Rgba5551:
+        //            return 2;
+        //        case ColorFormat.Rgb565:
+        //            return 2;
+        //        default:
+        //            throw new InvalidOperationException("Unsupported ColorFormat.");
+        //    }
+        //}
+
+        //public static int GetSize(this DepthFormat format)
+        //{
+        //    switch (format)
+        //    {
+        //        case DepthFormat.None:
+        //            return 0;
+        //        case DepthFormat.Depth16:
+        //            return 2;
+        //        case DepthFormat.Depth24Stencil8:
+        //            return 4;
+        //        default:
+        //            throw new InvalidOperationException("Unsupported DepthFormat.");
+        //    }
+        //}
+
+        //public static int GetSize(this IndexFormat format)
+        //{
+        //    if (format == IndexFormat.SixteenBits)
+        //    {
+        //        return 2;
+        //    }
+        //    if (format != IndexFormat.ThirtyTwoBits)
+        //    {
+        //        throw new InvalidOperationException("Unsupported IndexFormat.");
+        //    }
+        //    return 4;
+        //}
+
+        //public static int GetSize(this ShaderParameterType type)
+        //{
+        //    switch (type)
+        //    {
+        //        case ShaderParameterType.Float:
+        //            return 4;
+        //        case ShaderParameterType.Vector2:
+        //            return 8;
+        //        case ShaderParameterType.Vector3:
+        //            return 12;
+        //        case ShaderParameterType.Vector4:
+        //            return 16;
+        //        case ShaderParameterType.Matrix:
+        //            return 64;
+        //        default:
+        //            throw new InvalidOperationException("Unsupported ShaderParameterType.");
+        //    }
+        //}
 
         public static int GetSize(this VertexElementFormat format)
         {

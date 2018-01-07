@@ -8,6 +8,9 @@
       android:id="@+id/menu_item_3"
       android:title="关于模型bug"/>
   <item
+     android:id="@+id/menu_item_4"
+     android:title="版本历史"/>
+  <item
         android:id="@+id/menu_item_2"
         android:title="退出"/>
 </menu>

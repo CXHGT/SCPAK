@@ -5,6 +5,9 @@ namespace Engine
 {
     public class ModelData
     {
+        //
+        // Fields
+        //
         public List<ModelBoneData> Bones = new List<ModelBoneData>();
 
         public List<ModelMeshData> Meshes = new List<ModelMeshData>();

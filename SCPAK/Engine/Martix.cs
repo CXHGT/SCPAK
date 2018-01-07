@@ -179,7 +179,6 @@ namespace Engine
         {
             return new Matrix(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, x, y, z, 1f);
         }
-
         public static void MultiplyRestricted(ref Matrix m1, ref Matrix m2, out Matrix result)
         {
             result.M11 = m1.M11 * m2.M11 + m1.M12 * m2.M21 + m1.M13 * m2.M31 + m1.M14 * m2.M41;
@@ -203,6 +202,29 @@ namespace Engine
         public static Matrix Transpose(Matrix m)
         {
             return new Matrix(m.M11, m.M21, m.M31, m.M41, m.M12, m.M22, m.M32, m.M42, m.M13, m.M23, m.M33, m.M43, m.M14, m.M24, m.M34, m.M44);
+        }
+
+        //
+        // Methods
+        //
+        public bool Decompose(out Vector3 scale, out Quaternion rotation, out Vector3 translation)
+        {
+            translation.X = this.M41;
+            translation.Y = this.M42;
+            translation.Z = this.M43;
+            float num = (float)((this.M11 * this.M12 * this.M13 * this.M14 < 0f) ? (-1) : 1);
+            float num2 = (float)((this.M21 * this.M22 * this.M23 * this.M24 < 0f) ? (-1) : 1);
+            float num3 = (float)((this.M31 * this.M32 * this.M33 * this.M34 < 0f) ? (-1) : 1);
+            scale.X = num * MathUtils.Sqrt(this.M11 * this.M11 + this.M12 * this.M12 + this.M13 * this.M13);
+            scale.Y = num2 * MathUtils.Sqrt(this.M21 * this.M21 + this.M22 * this.M22 + this.M23 * this.M23);
+            scale.Z = num3 * MathUtils.Sqrt(this.M31 * this.M31 + this.M32 * this.M32 + this.M33 * this.M33);
+            if (scale.X == 0f || scale.Y == 0f || scale.Z == 0f)
+            {
+                rotation = Quaternion.Identity;
+                return false;
+            }
+            rotation = Quaternion.CreateFromRotationMatrix(new Matrix(this.M11 / scale.X, this.M12 / scale.X, this.M13 / scale.X, 0f, this.M21 / scale.Y, this.M22 / scale.Y, this.M23 / scale.Y, 0f, this.M31 / scale.Z, this.M32 / scale.Z, this.M33 / scale.Z, 0f, 0f, 0f, 0f, 1f));
+            return true;
         }
 
         public override bool Equals(object obj)

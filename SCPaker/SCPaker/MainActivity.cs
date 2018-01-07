@@ -177,6 +177,12 @@ namespace SCPaker
     .SetMessage("模型解析方法由Lixue提供，由于计算机浮点运算多多少少会丢失一些数值，这是必不可免的，所以游戏内有时会发现贴图有问题！\n简单的解决方法 :在对应的模型贴图前面加个\"!\"，英文符号非中文，若已经存在，则请忽略！")
     .SetPositiveButton("确定", (s, ItemClickEventArgs) => { }).Create()).Show();
                     break;
+                case Resource.Id.menu_item_4:
+                    (new Android.Support.V7.App.AlertDialog.Builder(this)
+    .SetTitle("历史版本及更新内容")
+    .SetMessage("测试版1.0.0:\t*解析png图片及文本文件\n\n1.0.0:\t*修复bug及模型伪解析\n\n1.1.0:\t*修复bug及模型文件解析\n\n1.2.0:\t*字体库文件解析\n\n1.3.1:\t*修复bug及音频文件解析")
+    .SetPositiveButton("确定", (s, ItemClickEventArgs) => { }).Create()).Show();
+                    break;
             }
             return true;
         }

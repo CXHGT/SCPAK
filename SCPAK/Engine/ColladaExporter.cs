@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using System.Xml.Linq;
 using System.Collections.Generic;
 namespace Engine
+
 {
     public class ColladaEx
     {
@@ -56,19 +58,24 @@ namespace Engine
 
         public void AddModel(ModelData model)
         {
-            XElement[] nodes = new XElement[model.Bones.Capacity];
+            XElement[] nodes = new XElement[model.Bones.Count];
             for (int i = 0; i < nodes.Length; i++)
             {
-                ModelBoneData data = model.Bones[i];
+                var data = model.Bones[i];
                 nodes[i] = GetNode(data.Name, data.Transform);
+            }
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                var data = model.Bones[i];
                 if (data.ParentBoneIndex != -1)
                     nodes[data.ParentBoneIndex].Add(nodes[i]);
                 else
                     visualScene.Add(nodes[i]);
             }
+
             foreach (ModelMeshData data in model.Meshes)
             {
-                XElement geometry = GetGeometry(model, data);
+                var geometry = GetGeometry(model, data);
                 nodes[data.ParentBoneIndex].Add(GetGeometryInstance(data.Name, geometry));
             }
         }
@@ -79,9 +86,9 @@ namespace Engine
             ModelBoneData boneData = model.Bones[data.ParentBoneIndex];
             string meshId = data.Name;
 
-            ModelBuffersData vertexBuffer = model.Buffers[meshPart.BuffersDataIndex];
+            var vertexBuffer = model.Buffers[meshPart.BuffersDataIndex];
             int count = meshPart.IndicesCount;
-            VertexDeclaration vertexDeclaration = vertexBuffer.VertexDeclaration;
+            var vertexDeclaration = vertexBuffer.VertexDeclaration;
 
             byte[] original = new byte[count * 32];
             using (BinaryReader reader = new BinaryReader(new MemoryStream(vertexBuffer.Indices)))
@@ -93,6 +100,7 @@ namespace Engine
                     Buffer.BlockCopy(vertexBuffer.Vertices, index * 32, original, i * 32, 32);
                 }
             }
+
             List<Vector3> vertices = new List<Vector3>();
             List<Vector3> normals = new List<Vector3>();
             float[] textureCord = new float[count * 2];
@@ -107,10 +115,10 @@ namespace Engine
                         for (int i = 0; i < count; i++)
                         {
                             reader.BaseStream.Position = vertexDeclaration.VertexStride * i + elem.Offset;
-                            Vector3 p = reader.ReadVector3();
+                            var p = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                             if (!vertices.Contains(p))
                                 vertices.Add(p);
-                            int ii = i % 3;
+                            var ii = i % 3;
                             triangle[ii] = p;
                             if (ii == 2)
                             {
@@ -126,10 +134,10 @@ namespace Engine
                         for (int i = 0; i < count; i++)
                         {
                             reader.BaseStream.Position = vertexDeclaration.VertexStride * i + elem.Offset;
-                            Vector3 p = reader.ReadVector3();
+                            var p = new Vector3(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
                             if (!normals.Contains(p))
                                 normals.Add(p);
-                            int ii = i % 3;
+                            var ii = i % 3;
                             triangle[ii] = p;
                             if (ii == 2)
                             {
@@ -170,7 +178,7 @@ namespace Engine
                 positionSource = GetSourceArray(
                     meshId,
                     "-mesh-positions",
-                    string.Join(" ", vertices.ConvertAll(v => string.Join(" ", v.X, v.Y, v.Z))),
+                    string.Join(" ", vertices.ConvertAll(v => string.Format("{0} {1} {2}", v.X.ToString("R"), v.Y.ToString("R"), v.Z.ToString("R")))),
                     vertices.Count * 3,
                     3,
                     XYZParam()
@@ -178,7 +186,7 @@ namespace Engine
                 normalSource = GetSourceArray(
                     meshId,
                     "-mesh-normals",
-                    string.Join(" ", normals.ConvertAll(v => string.Join(" ", v.X, v.Y, v.Z))),
+                    string.Join(" ", normals.ConvertAll(v => string.Format("{0} {1} {2}", v.X.ToString("R"), v.Y.ToString("R"), v.Z.ToString("R")))),
                     normals.Count * 3,
                     3,
                     XYZParam()
@@ -186,7 +194,7 @@ namespace Engine
                 texturecoorSource = GetSourceArray(
                     meshId,
                     "-mesh-map",
-                    string.Join(" ", textureCord),
+                    string.Join(" ", textureCord.Select(f => f.ToString("R"))),
                     textureCord.Length,
                     2,
                     STParam()
