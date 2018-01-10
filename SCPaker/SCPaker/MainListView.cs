@@ -36,39 +36,48 @@ namespace SCPaker
             Directory.GetFiles(directory).CopyTo(file, MainActivity.listFile.Length);
             MainActivity.listFile = file;
 
-            var tmpList = new List<string>(file);
-            tmpList.Sort();
-            MainActivity.listFile = tmpList.ToArray();
+            var list = new List<string>(file);
+            list.Sort((a, b) => {
+                bool ad = Directory.Exists(a);
+                bool bd = Directory.Exists(b);
+                if (ad == bd)
+                {
+                    return string.Compare(a, b, System.StringComparison.Ordinal);
+                }
+                if (ad)
+                {
+                    return -1;
+                }
+                return 1;
+            });
+            MainActivity.listFile = list.ToArray();
 
-            string[] directories = new string[MainActivity.listFile.Length];
-            List<Animal> listadapter = new List<Animal>(MainActivity.listFile.Length) { };
+            List<Animal> files = new List<Animal>(MainActivity.listFile.Length);
             for (int i = 0; i < MainActivity.listFile.Length; i++)
             {
-                string[] s = MainActivity.listFile[i].Split('/');
-                directories[i] = s[s.Length - 1];
                 FileInfo info = new FileInfo(MainActivity.listFile[i]);
                 if (File.Exists(MainActivity.listFile[i]))
                 {
                     string name = Path.GetExtension(MainActivity.listFile[i]);
                     int r = fileImage(name);
-                    listadapter.Add(new Animal()
+                    files.Add(new Animal
                     {
-                        Name = directories[i],
+                        Name = Path.GetFileName(MainActivity.listFile[i]),
                         Description = $"文件大小：{fileSize(info.Length)}",
                         Image = r
                     });
                 }
                 else if (Directory.Exists(MainActivity.listFile[i]))
                 {
-                    listadapter.Add(new Animal()
+                    files.Add(new Animal
                     {
-                        Name = directories[i],
+                        Name = Path.GetFileName(MainActivity.listFile[i]),
                         Description = info.DirectoryName,
                         Image = Resource.Drawable.ic_folder
                     });
                 }
             }
-            AnimalListAdapter adapter = new AnimalListAdapter(activity, listadapter);
+            AnimalListAdapter adapter = new AnimalListAdapter(activity, files);
             MainActivity.listView.Adapter = adapter;
             MainActivity.listFile.Clone();
         }
