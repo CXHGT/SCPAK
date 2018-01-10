@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">SCPaker</string>
     <string name="Introduce">点击PAK文件解包，长按文件夹打包PAK！</string>
 </resources>

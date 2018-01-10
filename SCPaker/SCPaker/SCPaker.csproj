@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,6 +89,36 @@
     <AndroidResource Include="Resources\layout\BlocksDataItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_zip.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

@@ -4,29 +4,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DEFFFA">
-    <android.support.v7.widget.Toolbar
+    android:background="#E8EAF6">
+<!--<android.support.v7.widget.Toolbar
         android:layout_height="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:id="@+id/Main_Toolbar"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/Main_DrawerLayout"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/Main_ListView" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/Introduce"
-            android:background="#D7E3FF"
-            android:textColor="#335935"
-            android:textSize="25sp"
-            android:layout_gravity="start" />
-    </android.support.v4.widget.DrawerLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/Main_ListView"
+        android:dividerHeight="4dp" />
 </LinearLayout>

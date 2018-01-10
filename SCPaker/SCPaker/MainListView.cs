@@ -1,6 +1,4 @@
 ﻿using Android.App;
-using Android.Widget;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,30 +6,16 @@ namespace SCPaker
 {
     public class MainListView
     {
-        bool isExit = false;
         private Activity activity;
+
         public MainListView(Activity activity)
         {
             this.activity = activity;
         }
+
         public void UpThisDirectories(string d)
         {
             string[] dire = d.Split('/');
-            if (dire.Length <= 2 && dire[1].Length <= 0)
-            {
-                System.Timers.Timer time_timer = null;
-                if (!isExit)
-                {
-                    isExit = true;
-                    Toast.MakeText(activity, "再按一次退出", ToastLength.Short).Show();
-                    time_timer = new System.Timers.Timer();
-                    time_timer.Interval = 2000;
-                    time_timer.Enabled = true;
-                    time_timer.Elapsed += delegate { isExit = false; };
-                }
-                else
-                    activity.Finish();
-            }
             string diress = "/";
             for (int i = 1; i < dire.Length - 1; i++)
                 diress += $"{dire[i]}/";
@@ -42,6 +26,7 @@ namespace SCPaker
             }
             UpDirectories(diress);
         }
+
         public void UpDirectories(string directory)
         {
             MainActivity.listDirectory = directory;
@@ -50,65 +35,81 @@ namespace SCPaker
             MainActivity.listFile.CopyTo(file, 0);
             Directory.GetFiles(directory).CopyTo(file, MainActivity.listFile.Length);
             MainActivity.listFile = file;
-            string[] directories = new string[MainActivity.listFile.Length];
-            List<Animal> listadapter = new List<Animal>(MainActivity.listFile.Length) { };
+
+            var list = new List<string>(file);
+            list.Sort((a, b) => {
+                bool ad = Directory.Exists(a);
+                bool bd = Directory.Exists(b);
+                if (ad == bd)
+                {
+                    return string.Compare(a, b, System.StringComparison.Ordinal);
+                }
+                if (ad)
+                {
+                    return -1;
+                }
+                return 1;
+            });
+            MainActivity.listFile = list.ToArray();
+
+            List<Animal> files = new List<Animal>(MainActivity.listFile.Length);
             for (int i = 0; i < MainActivity.listFile.Length; i++)
             {
-                string[] s = MainActivity.listFile[i].Split('/');
-                directories[i] = s[s.Length - 1];
                 FileInfo info = new FileInfo(MainActivity.listFile[i]);
                 if (File.Exists(MainActivity.listFile[i]))
                 {
                     string name = Path.GetExtension(MainActivity.listFile[i]);
-                    int r = fileImage(name) != 0 ? fileImage(name) : Resource.Drawable.unknown;
-                    listadapter.Add(new Animal()
+                    int r = fileImage(name);
+                    files.Add(new Animal
                     {
-                        Name = directories[i],
+                        Name = Path.GetFileName(MainActivity.listFile[i]),
                         Description = $"文件大小：{fileSize(info.Length)}",
                         Image = r
                     });
                 }
                 else if (Directory.Exists(MainActivity.listFile[i]))
                 {
-                    listadapter.Add(new Animal()
+                    files.Add(new Animal
                     {
-                        Name = directories[i],
+                        Name = Path.GetFileName(MainActivity.listFile[i]),
                         Description = info.DirectoryName,
-                        Image = Resource.Drawable.folder_blue
+                        Image = Resource.Drawable.ic_folder
                     });
                 }
             }
-            AnimalListAdapter adapter = new AnimalListAdapter(activity, listadapter);
+            AnimalListAdapter adapter = new AnimalListAdapter(activity, files);
             MainActivity.listView.Adapter = adapter;
             MainActivity.listFile.Clone();
         }
-        public int fileImage(string suffixName)
+
+        int fileImage(string suffixName)
         {
             switch (suffixName)
             {
                 case ".pak":
-                    return Resource.Drawable.database;
+                    return Resource.Drawable.ic_database;
                 case ".zip":
                 case ".tga":
                 case ".7z":
                 case ".rar":
-                    return Resource.Drawable.archive_yellow;
+                    return Resource.Drawable.ic_zip;
                 case ".txt":
                 case ".xml":
-                    return Resource.Drawable.text;
+                    return Resource.Drawable.ic_text;
                 case ".png":
                 case ".jpg":
                 case ".jpeg":
                 case ".gif":
-                    return Resource.Drawable.image;
+                    return Resource.Drawable.ic_image;
                 case ".apk":
-                    return Resource.Drawable.apk;
+                    return Resource.Drawable.ic_android;
+                default:
+                    return Resource.Drawable.ic_unkown;
             }
-            return 0;
         }
-        public string fileSize(long i)
+
+        string fileSize(long i)
         {
-            
             if (i < 1024)
             {
                 return i + "B";
