@@ -586,8 +586,6 @@ namespace Engine
             {
                 public static readonly ColladaPolygons.c a = new ColladaPolygons.c();
 
-                public static Func<string, int> a__3_0;
-
                 public static Func<string, int> a__3_1;
 
                 internal int b__3_0(string s)
