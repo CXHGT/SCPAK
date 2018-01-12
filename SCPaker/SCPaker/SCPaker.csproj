@@ -119,6 +119,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_zip.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_database.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -141,9 +142,6 @@
     <AndroidResource Include="Resources\menu\menu.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\database.png" />
