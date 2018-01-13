@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -56,12 +56,10 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=71f3e3261ac778b5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Crosslight.Xamarin.Android.Support.v4.23.1.1\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\Crosslight.Xamarin.Android.Support.v4.23.1.1\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v7.AppCompat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=71f3e3261ac778b5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Crosslight.Xamarin.Android.Support.v7.AppCompat.23.1.1\lib\MonoAndroid10\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\Crosslight.Xamarin.Android.Support.v7.AppCompat.23.1.1\lib\MonoAndroid10\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +87,37 @@
     <AndroidResource Include="Resources\layout\BlocksDataItem.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_android.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_folder.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_image.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_text.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_unkown.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_database.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_zip.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -105,36 +134,9 @@
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\menu.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\menu\menu.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\database.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\folder_blue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\text.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\unknown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\apk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\archive_yellow.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\BlocksDataEditMenu.xml">
@@ -146,6 +148,42 @@
       <Project>{d34ad991-8edf-4c2e-a8fe-57d2142b34c7}</Project>
       <Name>SCPAK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_android.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_unkown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_android.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_unkown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

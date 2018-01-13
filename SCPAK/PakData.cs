@@ -53,7 +53,16 @@ namespace SCPAK
                         }
                         break;
                     case "Engine.Media.BitmapFont":
-                        fileStream = File.OpenRead(fileName + ".lst");
+                        try
+                        {
+                            fileStream = File.OpenRead(fileName + ".lst");
+                        }
+                        catch
+                        {
+                            fileStream = File.OpenRead(fileName + ".font");
+                            fileStream.CopyTo(memoryStream);
+                            break;
+                        }
                         FontWriter(memoryStream, fileStream);
                         {
                             int nameCount = Path.GetFileName(fileName + ".lst").Length;

@@ -1411,34 +1411,31 @@ namespace SCPaker
 			public const int abc_textfield_search_material = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int apk = 2130837573;
+			public const int ic_android = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int archive_yellow = 2130837574;
+			public const int ic_database = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int database = 2130837575;
+			public const int ic_folder = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int folder_blue = 2130837576;
+			public const int ic_image = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int icon = 2130837577;
+			public const int ic_text = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int image = 2130837578;
+			public const int ic_unkown = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int menu = 2130837579;
-			
-			// aapt resource value: 0x7f02004e
-			public const int notification_template_icon_bg = 2130837582;
+			public const int ic_zip = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int text = 2130837580;
+			public const int icon = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int unknown = 2130837581;
+			public const int notification_template_icon_bg = 2130837581;
 			
 			static Drawable()
 			{
@@ -1477,17 +1474,11 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0058
 			public const int Item_TextView_2 = 2131427416;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int Main_DrawerLayout = 2131427418;
-			
-			// aapt resource value: 0x7f0b005b
-			public const int Main_ListView = 2131427419;
-			
 			// aapt resource value: 0x7f0b0059
-			public const int Main_Toolbar = 2131427417;
+			public const int Main_ListView = 2131427417;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int action0 = 2131427420;
+			// aapt resource value: 0x7f0b005a
+			public const int action0 = 2131427418;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int action_bar = 2131427393;
@@ -1513,8 +1504,8 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0042
 			public const int action_context_bar = 2131427394;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int action_divider = 2131427424;
+			// aapt resource value: 0x7f0b005e
+			public const int action_divider = 2131427422;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1543,32 +1534,32 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0018
 			public const int beginning = 2131427352;
 			
+			// aapt resource value: 0x7f0b0067
+			public const int blocksdata_menu_item_1 = 2131427431;
+			
+			// aapt resource value: 0x7f0b0068
+			public const int blocksdata_menu_item_2 = 2131427432;
+			
 			// aapt resource value: 0x7f0b0069
-			public const int blocksdata_menu_item_1 = 2131427433;
+			public const int blocksdata_menu_item_3 = 2131427433;
 			
 			// aapt resource value: 0x7f0b006a
-			public const int blocksdata_menu_item_2 = 2131427434;
+			public const int blocksdata_menu_item_4 = 2131427434;
 			
 			// aapt resource value: 0x7f0b006b
-			public const int blocksdata_menu_item_3 = 2131427435;
-			
-			// aapt resource value: 0x7f0b006c
-			public const int blocksdata_menu_item_4 = 2131427436;
-			
-			// aapt resource value: 0x7f0b006d
-			public const int blocksdata_menu_item_5 = 2131427437;
+			public const int blocksdata_menu_item_5 = 2131427435;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int buttonPanel = 2131427371;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int cancel_action = 2131427421;
+			// aapt resource value: 0x7f0b005b
+			public const int cancel_action = 2131427419;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int checkbox = 2131427385;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int chronometer = 2131427427;
+			// aapt resource value: 0x7f0b0061
+			public const int chronometer = 2131427425;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int collapseActionView = 2131427356;
@@ -1597,8 +1588,8 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0019
 			public const int end = 2131427353;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int end_padder = 2131427432;
+			// aapt resource value: 0x7f0b0066
+			public const int end_padder = 2131427430;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int expand_activities_button = 2131427365;
@@ -1621,14 +1612,14 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0026
 			public const int image = 2131427366;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int info = 2131427431;
-			
-			// aapt resource value: 0x7f0b0061
-			public const int line1 = 2131427425;
-			
 			// aapt resource value: 0x7f0b0065
-			public const int line3 = 2131427429;
+			public const int info = 2131427429;
+			
+			// aapt resource value: 0x7f0b005f
+			public const int line1 = 2131427423;
+			
+			// aapt resource value: 0x7f0b0063
+			public const int line3 = 2131427427;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int linearLayout1 = 2131427408;
@@ -1639,20 +1630,20 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0028
 			public const int list_item = 2131427368;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int media_actions = 2131427423;
+			// aapt resource value: 0x7f0b005d
+			public const int media_actions = 2131427421;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int menu_item_1 = 2131427438;
-			
-			// aapt resource value: 0x7f0b0071
-			public const int menu_item_2 = 2131427441;
-			
-			// aapt resource value: 0x7f0b006f
-			public const int menu_item_3 = 2131427439;
+			// aapt resource value: 0x7f0b006d
+			public const int menu_item_1 = 2131427437;
 			
 			// aapt resource value: 0x7f0b0070
-			public const int menu_item_4 = 2131427440;
+			public const int menu_item_2 = 2131427440;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int menu_item_3 = 2131427438;
+			
+			// aapt resource value: 0x7f0b006f
+			public const int menu_item_4 = 2131427439;
 			
 			// aapt resource value: 0x7f0b001a
 			public const int middle = 2131427354;
@@ -1753,8 +1744,8 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b0017
 			public const int src_over = 2131427351;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int status_bar_latest_event_content = 2131427422;
+			// aapt resource value: 0x7f0b005c
+			public const int status_bar_latest_event_content = 2131427420;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;
@@ -1762,17 +1753,17 @@ namespace SCPaker
 			// aapt resource value: 0x7f0b000b
 			public const int tabMode = 2131427339;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int text = 2131427430;
-			
 			// aapt resource value: 0x7f0b0064
-			public const int text2 = 2131427428;
+			public const int text = 2131427428;
+			
+			// aapt resource value: 0x7f0b0062
+			public const int text2 = 2131427426;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int textSpacerNoButtons = 2131427380;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int time = 2131427426;
+			// aapt resource value: 0x7f0b0060
+			public const int time = 2131427424;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int title = 2131427370;
@@ -1782,6 +1773,9 @@ namespace SCPaker
 			
 			// aapt resource value: 0x7f0b002e
 			public const int topPanel = 2131427374;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int tutorial = 2131427436;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;
@@ -1991,14 +1985,11 @@ namespace SCPaker
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050015
-			public const int ApplicationName = 2131034133;
-			
 			// aapt resource value: 0x7f050014
-			public const int Hello = 2131034132;
+			public const int ApplicationName = 2131034132;
 			
-			// aapt resource value: 0x7f050016
-			public const int Introduce = 2131034134;
+			// aapt resource value: 0x7f050015
+			public const int Introduce = 2131034133;
 			
 			// aapt resource value: 0x7f050000
 			public const int abc_action_bar_home_description = 2131034112;

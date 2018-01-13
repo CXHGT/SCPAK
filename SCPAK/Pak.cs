@@ -120,6 +120,9 @@ namespace SCPAK
                     case ".lst":
                         typeName = "Engine.Media.BitmapFont";
                         break;
+                    case ".font":
+                        typeName = "Engine.Media.BitmapFont";
+                        break;
                     case ".wav":
                         typeName = "Engine.Audio.SoundBuffer";
                         break;

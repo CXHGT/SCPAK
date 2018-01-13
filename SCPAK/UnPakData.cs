@@ -66,28 +66,41 @@ namespace SCPAK
                         break;
                     case "Engine.Media.BitmapFont":
                         {
-                            string[] fileNames = pakContentFile.fileName.Split('/');
-                            string fileName = "";
-                            for (int i = 0; i < fileNames.Length; i++)
+                            try
                             {
-                                if (i + 1 == fileNames.Length)
+                                string[] fileNames = pakContentFile.fileName.Split('/');
+                                string fileName = "";
+                                for (int i = 0; i < fileNames.Length; i++)
                                 {
-                                    fileName += "/!" + fileNames[i];
+                                    if (i + 1 == fileNames.Length)
+                                    {
+                                        fileName += "/!" + fileNames[i];
+                                    }
+                                    else
+                                    {
+                                        fileName += "/" + fileNames[i];
+                                    }
                                 }
-                                else
+                                MemoryStream lstStream = new MemoryStream();
+                                FontSave(pakContentFile.fileStream, lstStream);
+                                Stream pngStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}.png");
+                                bool b = PngSave(pakContentFile.fileStream, pngStream);
+                                pngStream.Dispose();
+                                if (b)
                                 {
-                                    fileName += "/" + fileNames[i];
+                                    if (File.Exists($"{pakDirectory}{fileName}.png")) File.Delete($"{pakDirectory}{fileName}.png");
+                                    File.Move($"{pakDirectory}/{pakContentFile.fileName}.png", $"{pakDirectory}{fileName}.png");
                                 }
+                                fileStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}.lst");
+                                lstStream.Position = 0;
+                                lstStream.CopyTo(fileStream);
+                                lstStream.Dispose();
                             }
-                            fileStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}.lst");
-                            FontSave(pakContentFile.fileStream, fileStream);
-                            Stream pngStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}.png");
-                            bool b = PngSave(pakContentFile.fileStream, pngStream);
-                            if (b)
+                            catch
                             {
-                                fileStream.Dispose();
-                                if (File.Exists($"{pakDirectory}{fileName}.png")) File.Delete($"{pakDirectory}{fileName}.png");
-                                File.Move($"{pakDirectory}/{pakContentFile.fileName}.png", $"{pakDirectory}{fileName}.png");
+                                pakContentFile.fileStream.Position = 0;
+                                fileStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}.font");
+                                pakContentFile.fileStream.CopyTo(fileStream);
                             }
                         }
                         break;
@@ -96,9 +109,10 @@ namespace SCPAK
                         pakContentFile.fileStream.CopyTo(fileStream);
                         break;
                     default:
-                        fileStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}");
-                        pakContentFile.fileStream.CopyTo(fileStream);
-                        break;
+                        throw new Exception("发现无法识别的文件类型:"+pakContentFile.typeName+"\t文件名称:"+pakContentFile.fileName);
+                        //fileStream = CreateFile($"{pakDirectory}/{pakContentFile.fileName}");
+                        //pakContentFile.fileStream.CopyTo(fileStream);
+                        //break;
                 }
                 fileStream.Dispose();
                 pakContentFile.fileStream.Dispose();

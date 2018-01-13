@@ -29,7 +29,7 @@ namespace SCPaker.BlocksDataEdit
             SetContentView(Resource.Layout.BlocksDataEditActivity);
             listView = FindViewById<ListView>(Resource.Id.BlocksData_ListView);
             spinner = FindViewById<Spinner>(Resource.Id.BlocksData_Spinner);
-            spinner.ItemClick += new EventHandler<AdapterView.ItemClickEventArgs>(SpinnerClick);
+            spinner.ItemClick += SpinnerClick;
             FileStream fileStream = File.OpenRead("app:/BlocksData.txt");
             StreamReader sr = new StreamReader(fileStream);
             while (true)
@@ -102,9 +102,7 @@ namespace SCPaker.BlocksDataEdit
             foreach(string item_string in dataBase[position])
             {
                 int i = dataBase[position].IndexOf(item_string);
-                Item item = new Item();
-                
-
+                //Item item = new Item();
 
             }
 
