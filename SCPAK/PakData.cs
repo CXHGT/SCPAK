@@ -81,9 +81,10 @@ namespace SCPAK
                 fileStream.Dispose();
                 memoryStream.Position = 0L;
                 return memoryStream;
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
-                throw new Exception("文件写入错误 :"+fileName+"\t类型 :"+typeName+"\n具体错误信息 :"+e.Message);
+                throw new Exception("文件写入错误 :" + fileName + "\t类型 :" + typeName + "\n具体错误信息 :" + e.Message);
             }
         }
         private static void TextWriter(MemoryStream memoryStream, FileStream fileStream)
@@ -97,7 +98,7 @@ namespace SCPAK
         {
             return x > 0L && (x & x - 1L) == 0L;
         }
-        private static void PngWriter(MemoryStream memoryStream, FileStream fileStream,bool modelpng = false)
+        private static void PngWriter(MemoryStream memoryStream, FileStream fileStream, bool modelpng = false)
         {
             PngReader pngReader = new PngReader(fileStream);
             EngineBinaryWriter binaryWriter = new EngineBinaryWriter(memoryStream, false);
@@ -132,7 +133,7 @@ namespace SCPAK
                 list.Add(image);
                 modelpng = true;
             }
-            if(modelpng) goto IL_00;
+            if (modelpng) goto IL_00;
             binaryWriter.Write(image.Width);
             binaryWriter.Write(image.Height);
             binaryWriter.Write(1);
@@ -150,7 +151,7 @@ namespace SCPAK
                 }
             }
             return;
-            IL_00:
+        IL_00:
             binaryWriter.Write(list[0].Width);
             binaryWriter.Write(list[0].Height);
             binaryWriter.Write(list.Count);
@@ -162,7 +163,7 @@ namespace SCPAK
                 }
             }
         }
-        private static void SoundWriter(MemoryStream memoryStream,FileStream fileStream)
+        private static void SoundWriter(MemoryStream memoryStream, FileStream fileStream)
         {
             BinaryReader binaryReader = new BinaryReader(fileStream);
             binaryReader.BaseStream.Position = 22L;
@@ -186,11 +187,11 @@ namespace SCPAK
 
         private static void FontWriter(MemoryStream memoryStream, FileStream fileStream)
         {
-            EngineBinaryWriter binaryWriter = new EngineBinaryWriter(memoryStream,false);
-            StreamReader streamReader = new StreamReader(fileStream,Encoding.UTF8);
+            EngineBinaryWriter binaryWriter = new EngineBinaryWriter(memoryStream, false);
+            StreamReader streamReader = new StreamReader(fileStream, Encoding.UTF8);
             int num = int.Parse(streamReader.ReadLine());
             binaryWriter.Write(num);
-            for(int i = 0; i < num; i++)
+            for (int i = 0; i < num; i++)
             {
                 string[] data = streamReader.ReadLine().Split('\t');
                 binaryWriter.Write(char.Parse(data[0]));

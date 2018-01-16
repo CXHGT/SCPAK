@@ -38,6 +38,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="PngCs">
+      <HintPath>PngCs.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\BoundingBox.cs" />
@@ -73,10 +76,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\PngCS\Hjg.Pngcs\Hjg.Pngcs.csproj">
-      <Project>{FD3B0D50-46B3-4A83-9A6D-C641569142CF}</Project>
-      <Name>Hjg.Pngcs</Name>
-    </ProjectReference>
+    <None Include="PngCs.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

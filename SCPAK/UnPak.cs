@@ -20,7 +20,7 @@ namespace SCPAK
             {
                 throw new FileNotFoundException("文件不存在！");
             }
-            string pakDirectory = Path.GetDirectoryName(PakFile)+"/"+Path.GetFileNameWithoutExtension(PakFile);
+            string pakDirectory = Path.GetDirectoryName(PakFile) + "/" + Path.GetFileNameWithoutExtension(PakFile);
             FileStream stream = new FileStream(PakFile, FileMode.Open);
             BinaryReader binaryReader = new BinaryReader(stream, Encoding.UTF8, true);
             isPakFile(binaryReader);
@@ -40,7 +40,7 @@ namespace SCPAK
                     fileName = fileName,
                     typeName = typeName
                 });
-                
+
                 binaryReader.BaseStream.Position = position;
             }
             UnPakData._UnPakData(listFileStream, pakDirectory);

@@ -37,7 +37,8 @@ namespace SCPaker
             MainActivity.listFile = file;
 
             var list = new List<string>(file);
-            list.Sort((a, b) => {
+            list.Sort((a, b) =>
+            {
                 bool ad = Directory.Exists(a);
                 bool bd = Directory.Exists(b);
                 if (ad == bd)
