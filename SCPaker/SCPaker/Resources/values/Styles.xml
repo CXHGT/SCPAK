@@ -5,9 +5,4 @@
     <item name="colorPrimaryDark">#303F9F</item>
     <item name="colorAccent">#48EFFF</item>
   </style>
-  <style name="BlocksDataTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    <item name="colorPrimary">#407ADF</item>
-    <item name="colorPrimaryDark">#303F9F</item>
-    <item name="colorAccent">#FFFFFF</item>
-  </style>
 </resources>
