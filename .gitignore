@@ -20,6 +20,7 @@ _p.c
 .cache
 .ilk
 .log
+.vs
 [Bb]in
 [Dd]ebug
 .lib
