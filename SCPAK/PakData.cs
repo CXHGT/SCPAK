@@ -84,7 +84,7 @@ namespace SCPAK
             }
             catch (Exception e)
             {
-                throw new Exception("文件写入错误 :" + fileName + "\t类型 :" + typeName + "\n具体错误信息 :" + e.Message);
+                throw new Exception("文件写入错误 :" + fileName + "\t类型 :" + typeName, e);
             }
         }
         private static void TextWriter(MemoryStream memoryStream, FileStream fileStream)

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Engine
 
 {
-    public class ColladaEx
+    public class ColladaExporter
     {
         public const string COLLADA = "http://www.collada.org/2005/11/COLLADASchema";
         public const string INSTANCE = "http://www.w3.org/2001/XMLSchema-instance";
@@ -17,7 +17,19 @@ namespace Engine
         XElement root;
         XElement visualScene;
 
-        public ColladaEx()
+        public static void Import(Stream input, Stream output)
+        {
+            ModelContentWriter.Write(output, Collada.Load(input), Vector3.One);
+        }
+
+        public static void Export(Stream input, Stream output)
+        {
+            var exporter = new ColladaExporter();
+            exporter.AddModel(ModelContentReader.Read(input, out bool keepTags));
+            exporter.Save(output);
+        }
+
+        public ColladaExporter()
         {
             document = new XDocument(
                 new XDeclaration("1.0", "UTF-8", null)
@@ -51,9 +63,9 @@ namespace Engine
             document.Add(root);
         }
 
-        public void Save(Stream path)
+        public void Save(Stream stream)
         {
-            document.Save(path);
+            document.Save(stream);
         }
 
         public void AddModel(ModelData model)

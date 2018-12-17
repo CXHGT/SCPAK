@@ -242,11 +242,9 @@ namespace SCPAK
         {
             ModelData data = ModelContentReader.Read(stream, out bool b);
             stream.Dispose();
-            ColladaEx ex = new ColladaEx();
+            ColladaExporter ex = new ColladaExporter();
             ex.AddModel(data);
             ex.Save(daeStream);
         }
-
-
     }
 }

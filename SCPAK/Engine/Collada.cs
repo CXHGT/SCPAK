@@ -74,6 +74,22 @@ namespace Engine
             {
                 IndexVertices(current3.VertexDeclaration.VertexStride, current3.Vertices, out current3.Vertices, out current3.Indices);
             }
+            if (colladaRoot.Asset.UpAxis == UpAxis.Z_UP)
+            {
+                modelData.Bones[0].Transform *= new Matrix(
+                    1, 0, 0, 0,
+                    0, 0, 1, 0,
+                    0, 1, 0, 0,
+                    0, 0, 0, 1);
+            }
+            else if (colladaRoot.Asset.UpAxis == UpAxis.X_UP)
+            {
+                modelData.Bones[0].Transform *= new Matrix(
+                    0, 1, 0, 0,
+                    1, 0, 0, 0,
+                    0, 0, 1, 0,
+                    0, 0, 0, 1);
+            }
             return modelData;
         }
 
@@ -282,6 +298,7 @@ namespace Engine
         class Asset
         {
             public readonly float Meter = 1f;
+            public readonly UpAxis UpAxis = UpAxis.Z_UP;
 
             public Asset(XElement node)
             {
@@ -294,7 +311,30 @@ namespace Engine
                         Meter = float.Parse(xAttribute.Value, CultureInfo.InvariantCulture);
                     }
                 }
+                xElement = node.Element(ColladaRoot.Namespace + "up_axis");
+                if (xElement != null)
+                {
+                    switch (xElement.Value)
+                    {
+                        case "X_UP":
+                            UpAxis = UpAxis.X_UP;
+                            break;
+                        case "Y_UP":
+                            UpAxis = UpAxis.Y_UP;
+                            break;
+                        case "Z_UP":
+                            UpAxis = UpAxis.Z_UP;
+                            break;
+                    }
+                }
             }
+        }
+
+        enum UpAxis
+        {
+            X_UP,
+            Y_UP,
+            Z_UP
         }
 
         sealed class c__DisplayClass3_0
@@ -647,6 +687,8 @@ namespace Engine
 
             public ColladaRoot(XElement node)
             {
+                if (node.GetDefaultNamespace() != Namespace)
+                    throw new NotSupportedException("given collada viersion is not supported: " + node.GetDefaultNamespace());
                 Asset = new Asset(node.Element(ColladaRoot.Namespace + "asset"));
                 foreach (XElement current in node.Elements(ColladaRoot.Namespace + "library_geometries"))
                 {
