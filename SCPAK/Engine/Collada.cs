@@ -76,18 +76,24 @@ namespace Engine
             }
             if (colladaRoot.Asset.UpAxis == UpAxis.Z_UP)
             {
-                modelData.Bones[0].Transform *= new Matrix(
-                    1, 0, 0, 0,
+                ModelBoneData bone = modelData.Bones[0];
+                while (bone.ParentBoneIndex != -1)
+                    bone = modelData.Bones[bone.ParentBoneIndex];
+                bone.Transform *= new Matrix(
                     0, 0, 1, 0,
+                    1, 0, 0, 0,
                     0, 1, 0, 0,
                     0, 0, 0, 1);
             }
             else if (colladaRoot.Asset.UpAxis == UpAxis.X_UP)
             {
-                modelData.Bones[0].Transform *= new Matrix(
+                ModelBoneData bone = modelData.Bones[0];
+                while (bone.ParentBoneIndex != -1)
+                    bone = modelData.Bones[bone.ParentBoneIndex];
+                bone.Transform *= new Matrix(
                     0, 1, 0, 0,
-                    1, 0, 0, 0,
                     0, 0, 1, 0,
+                    1, 0, 0, 0,
                     0, 0, 0, 1);
             }
             return modelData;

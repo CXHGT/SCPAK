@@ -7,7 +7,8 @@ namespace SCPaker.Windows
 {
     class Program
     {
-        const String information = @"SCPAK.Windows 版本1.1.0
+        const String version = "1.1.1";
+        static readonly String information = $@"SCPAK.Windows 版本{version}
 作者：守望地雷（已失踪）、lixue_jiu（也经常失踪）
 我是lixue_jiu，这个程序原本是守望地雷写的，但是代码质量不敢恭维；
 后来地雷失踪了，然后现在我又来修改一番，解决模型方面的问题
@@ -15,7 +16,7 @@ namespace SCPaker.Windows
 
         static void Main(string[] args)
         {
-            Console.WriteLine(information);
+            WriteLine(information);
             if (args.Length < 1)
             {
                 WriteLine("将pak文件拖动到程序图标上以解包");
