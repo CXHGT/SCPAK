@@ -12,8 +12,10 @@ namespace SCPAK
     {
         public static Stream _PakData(string fileName, string typeName)
         {
+#if !DEBUG
             try
             {
+#endif
                 MemoryStream memoryStream = new MemoryStream();
                 FileStream fileStream;
                 switch (typeName)
@@ -81,11 +83,13 @@ namespace SCPAK
                 fileStream.Dispose();
                 memoryStream.Position = 0L;
                 return memoryStream;
+#if !DEBUG
             }
             catch (Exception e)
             {
                 throw new Exception("文件写入错误 :" + fileName + "\t类型 :" + typeName, e);
             }
+#endif
         }
         private static void TextWriter(MemoryStream memoryStream, FileStream fileStream)
         {

@@ -79,22 +79,22 @@ namespace Engine
                 ModelBoneData bone = modelData.Bones[0];
                 while (bone.ParentBoneIndex != -1)
                     bone = modelData.Bones[bone.ParentBoneIndex];
-                bone.Transform *= new Matrix(
-                    0, 0, 1, 0,
+                bone.Transform = new Matrix(
                     1, 0, 0, 0,
+                    0, 0, -1, 0,
                     0, 1, 0, 0,
-                    0, 0, 0, 1);
+                    0, 0, 0, 1) * bone.Transform;
             }
             else if (colladaRoot.Asset.UpAxis == UpAxis.X_UP)
             {
                 ModelBoneData bone = modelData.Bones[0];
                 while (bone.ParentBoneIndex != -1)
                     bone = modelData.Bones[bone.ParentBoneIndex];
-                bone.Transform *= new Matrix(
+                bone.Transform = new Matrix(
                     0, 1, 0, 0,
+                    -1, 0, 0, 0,
                     0, 0, 1, 0,
-                    1, 0, 0, 0,
-                    0, 0, 0, 1);
+                    0, 0, 0, 1) * bone.Transform;
             }
             return modelData;
         }
@@ -173,7 +173,7 @@ namespace Engine
                 modelBuffersData.VertexDeclaration = c__DisplayClass3_.vertexDeclaration;
             }
             modelMeshPartData.BuffersDataIndex = data.Buffers.IndexOf(modelBuffersData);
-            int num2 = polygons.P.Count / polygons.Inputs.Count;
+            int num2 = polygons.P.Count / polygons.InputCount;
             List<int> list = new List<int>();
             if (polygons.VCount.Count == 0)
             {
@@ -231,7 +231,7 @@ namespace Engine
                             float[] arg_3EF_0 = value.Source.Accessor.Source.Array;
                             int offset = value.Source.Accessor.Offset;
                             int stride = value.Source.Accessor.Stride;
-                            int num6 = polygons.P[list[j] * polygons.Inputs.Count + value.Offset];
+                            int num6 = polygons.P[list[j] * polygons.InputCount + value.Offset];
                             binaryWriter.BaseStream.Position = (long)(j * vertexStride + key.Offset);
                             float num7 = arg_3EF_0[offset + stride * num6];
                             float num8 = arg_3EF_0[offset + stride * num6 + 1];
@@ -250,7 +250,7 @@ namespace Engine
                             float[] arg_51E_0 = value.Source.Accessor.Source.Array;
                             int offset2 = value.Source.Accessor.Offset;
                             int stride2 = value.Source.Accessor.Stride;
-                            int num10 = polygons.P[list[k] * polygons.Inputs.Count + value.Offset];
+                            int num10 = polygons.P[list[k] * polygons.InputCount + value.Offset];
                             binaryWriter.BaseStream.Position = (long)(k * vertexStride + key.Offset);
                             float num11 = arg_51E_0[offset2 + stride2 * num10];
                             float num12 = arg_51E_0[offset2 + stride2 * num10 + 1];
@@ -268,7 +268,7 @@ namespace Engine
                             float[] array = value.Source.Accessor.Source.Array;
                             int offset3 = value.Source.Accessor.Offset;
                             int stride3 = value.Source.Accessor.Stride;
-                            int num15 = polygons.P[list[l] * polygons.Inputs.Count + value.Offset];
+                            int num15 = polygons.P[list[l] * polygons.InputCount + value.Offset];
                             binaryWriter.BaseStream.Position = (long)(l * vertexStride + key.Offset);
                             binaryWriter.Write(array[offset3 + stride3 * num15]);
                             binaryWriter.Write(1f - array[offset3 + stride3 * num15 + 1]);
@@ -285,7 +285,7 @@ namespace Engine
                             float[] array2 = value.Source.Accessor.Source.Array;
                             int offset4 = value.Source.Accessor.Offset;
                             int stride4 = value.Source.Accessor.Stride;
-                            int num16 = polygons.P[list[m] * polygons.Inputs.Count + value.Offset];
+                            int num16 = polygons.P[list[m] * polygons.InputCount + value.Offset];
                             binaryWriter.BaseStream.Position = (long)(m * vertexStride + key.Offset);
                             Color color = new Color(array2[offset4 + stride4 * num16], array2[offset4 + stride4 * num16 + 1], array2[offset4 + stride4 * num16 + 2], array2[offset4 + stride4 * num16 + 3]);
                             binaryWriter.Write(color.PackedValue);
@@ -645,6 +645,8 @@ namespace Engine
                 }
             }
 
+            public readonly int InputCount;
+
             public List<ColladaInput> Inputs = new List<ColladaInput>();
 
             public List<int> VCount = new List<int>();
@@ -657,6 +659,13 @@ namespace Engine
                 {
                     Inputs.Add(new ColladaInput(collada, current));
                 }
+                int count = 0;
+                foreach (ColladaInput i in Inputs)
+                {
+                    if (i.Offset > count)
+                        count = i.Offset;
+                }
+                InputCount = count + 1;
                 foreach (XElement current2 in node.Elements(ColladaRoot.Namespace + "vcount"))
                 {
                     List<int> arg_CC_0 = VCount;

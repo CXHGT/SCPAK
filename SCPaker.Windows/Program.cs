@@ -7,7 +7,7 @@ namespace SCPaker.Windows
 {
     class Program
     {
-        const String version = "1.1.1";
+        const String version = "1.1.4";
         static readonly String information = $@"SCPAK.Windows 版本{version}
 作者：守望地雷（已失踪）、lixue_jiu（也经常失踪）
 我是lixue_jiu，这个程序原本是守望地雷写的，但是代码质量不敢恭维；
@@ -25,12 +25,16 @@ namespace SCPaker.Windows
             }
             else
             {
+                WriteLine();
                 string text = args[0];
                 if (Directory.Exists(text))
                 {
+#if !DEBUG
                     try
                     {
+#endif
                         new Pak(text);
+#if !DEBUG
                     }
                     catch (Exception e)
                     {
@@ -50,12 +54,16 @@ namespace SCPaker.Windows
                             Exit(e);
                         }
                     }
+#endif
                 }
                 else
                 {
+#if !DEBUG
                     try
                     {
+#endif
                         new UnPak(text);
+#if !DEBUG
                     }
                     catch (Exception e)
                     {
@@ -70,6 +78,7 @@ namespace SCPaker.Windows
                             Exit(e);
                         }
                     }
+#endif
                 }
             }
         }
