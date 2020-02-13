@@ -21,6 +21,7 @@ namespace SCPaker.Windows
                 string text = args[0];
                 if (Directory.Exists(text))
                 {
+                    Console.WriteLine("开始打包");
                     try
                     {
                         new Pak(text);
@@ -31,10 +32,11 @@ namespace SCPaker.Windows
                         WriteLine("按Enter键退出......");
                         ReadKey();
                     }
+                    Console.WriteLine("打包完毕");
                 }
                 else
                 {
-                    //new UnPak(text);
+                    Console.WriteLine("开始解包");
                     try
                     {
                         new UnPak(text);
@@ -45,6 +47,7 @@ namespace SCPaker.Windows
                         WriteLine("按Enter键退出......");
                         ReadKey();
                     }
+                    Console.WriteLine("解包完毕");
                 }
             }
         }

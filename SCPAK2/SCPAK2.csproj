@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62727A07-1870-4CDD-80ED-335537D33E99}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SCPaker.Windows</RootNamespace>
-    <AssemblyName>SCPaker.Windows</AssemblyName>
+    <RootNamespace>SCPAK</RootNamespace>
+    <AssemblyName>SCPAK2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -35,33 +34,38 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\ModelExporter.cs" />
+    <Compile Include="Handler\FontHandler.cs" />
+    <Compile Include="Handler\ModelHandler.cs" />
+    <Compile Include="Handler\ShaderHandler.cs" />
+    <Compile Include="Handler\SoundHandler.cs" />
+    <Compile Include="Handler\TextHandler.cs" />
+    <Compile Include="Handler\Texture2DHandler.cs" />
+    <Compile Include="Other\BoundingBox.cs" />
+    <Compile Include="Other\Collada.cs" />
+    <Compile Include="Other\Color.cs" />
+    <Compile Include="Other\ExtensionMethods.cs" />
+    <Compile Include="Model\Matrix.cs" />
+    <Compile Include="Other\ModelBoneData.cs" />
+    <Compile Include="Other\ModelBuffersData.cs" />
+    <Compile Include="Model\ModelData.cs" />
+    <Compile Include="Other\ModelMeshData.cs" />
+    <Compile Include="Other\ModelMeshPartData.cs" />
+    <Compile Include="Other\Vector3.cs" />
+    <Compile Include="Other\VertexDeclaration.cs" />
+    <Compile Include="Other\VertexElement.cs" />
+    <Compile Include="Other\VertexElementFormat.cs" />
+    <Compile Include="PadStream.cs" />
+    <Compile Include="Pak.cs" />
+    <Compile Include="PakInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SCPAK2\SCPAK2.csproj">
-      <Project>{56b9f61f-26db-43ee-aab2-f7429bb2a209}</Project>
-      <Name>SCPAK2</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
+    <Compile Include="UnPak.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

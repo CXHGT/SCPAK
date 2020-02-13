@@ -1,51 +1,30 @@
 ﻿using System;
-namespace Engine
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SCPAK
 {
     public struct Matrix : IEquatable<Matrix>
     {
-        //
-        // Static Fields
-        //
-        public static readonly Matrix Identity = new Matrix(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f);
-
-        //
-        // Fields
-        //
         public float M11;
-
+        public float M12;
+        public float M13;
+        public float M14;
+        public float M21;
+        public float M22;
+        public float M23;
+        public float M24;
+        public float M31;
+        public float M32;
+        public float M33;
+        public float M34;
+        public float M41;
+        public float M42;
+        public float M43;
         public float M44;
 
-        public float M43;
-
-        public float M42;
-
-        public float M41;
-
-        public float M33;
-
-        public float M32;
-
-        public float M34;
-
-        public float M24;
-
-        public float M23;
-
-        public float M22;
-
-        public float M21;
-
-        public float M14;
-
-        public float M13;
-
-        public float M12;
-
-        public float M31;
-
-        //
-        // Constructors
-        //
         public Matrix(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44)
         {
             this.M11 = m11;
@@ -65,17 +44,13 @@ namespace Engine
             this.M43 = m43;
             this.M44 = m44;
         }
-
-        //
-        // Static Methods
-        //
         public static Matrix CreateFromAxisAngle(Vector3 axis, float angle)
         {
             float x = axis.X;
             float y = axis.Y;
             float z = axis.Z;
-            float num = MathUtils.Sin(angle);
-            float num2 = MathUtils.Cos(angle);
+            float num = (float)Math.Sin(angle);
+            float num2 = (float)Math.Cos(angle);
             float num3 = x * x;
             float num4 = y * y;
             float num5 = z * z;
@@ -187,5 +162,7 @@ namespace Engine
             Matrix.MultiplyRestricted(ref m1, ref m2, out result);
             return result;
         }
+
+        public static readonly Matrix Identity = new Matrix(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f);
     }
 }

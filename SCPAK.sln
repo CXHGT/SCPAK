@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPaker.Windows", "SCPaker.Windows\SCPaker.Windows.csproj", "{62727A07-1870-4CDD-80ED-335537D33E99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPaker", "SCPaker\SCPaker\SCPaker.csproj", "{2C3C319C-AAB2-4064-9C8D-3F398C8F8EDB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPAK", "SCPAK\SCPAK.csproj", "{D34AD991-8EDF-4C2E-A8FE-57D2142B34C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCPAK2", "SCPAK2\SCPAK2.csproj", "{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{D34AD991-8EDF-4C2E-A8FE-57D2142B34C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D34AD991-8EDF-4C2E-A8FE-57D2142B34C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D34AD991-8EDF-4C2E-A8FE-57D2142B34C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B9F61F-26DB-43EE-AAB2-F7429BB2A209}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,6 +17,10 @@ namespace Engine
                 modelBoneData.Name = engineBinaryReader.ReadString();
                 modelBoneData.Transform = engineBinaryReader.ReadMatrix();
             }
+
+
+
+
             modelData.Meshes.Capacity = engineBinaryReader.ReadInt32();
             for (int j = 0; j < modelData.Meshes.Capacity; j++)
             {
@@ -36,6 +40,11 @@ namespace Engine
                     modelMeshPartData.BoundingBox = engineBinaryReader.ReadBoundingBox();
                 }
             }
+
+
+
+
+
             modelData.Buffers.Capacity = engineBinaryReader.ReadInt32();
             for (int l = 0; l < modelData.Buffers.Capacity; l++)
             {
@@ -50,6 +59,13 @@ namespace Engine
                 modelBuffersData.Vertices = engineBinaryReader.ReadBytes(engineBinaryReader.ReadInt32());
                 modelBuffersData.Indices = engineBinaryReader.ReadBytes(engineBinaryReader.ReadInt32());
             }
+
+
+
+
+
+
+
             return modelData;
         }
     }

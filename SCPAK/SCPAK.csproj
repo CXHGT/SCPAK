@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PngCs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SCMOD\new2.1\Survivalcraft\unknown\assemblies\PngCs.dll</HintPath>
+    <Reference Include="PngCs">
+      <HintPath>F:\Survivalcreat_MOD_project\Survivalcraft\PngCs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
